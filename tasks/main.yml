@@ -1,7 +1,7 @@
 ---
 # tasks file for sa-pm2
   - include: tasks_nodejs.yml
-    when: option_install_nodejs && option_nodejs_install_with_apt
+    when: option_install_nodejs and option_nodejs_install_with_apt
 
   - include: tasks_nodejs.yml
-    when: option_install_nodejs && option_nodejs_install_with_nvm
+    when: option_install_nodejs and option_nodejs_install_with_nvm
