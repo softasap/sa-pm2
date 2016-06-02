@@ -4,9 +4,9 @@
     - {
         role: "role_under_test",
         option_install_nodejs: true,
-        option_nodejs_install_with_nvm: true,
-        option_nodejs_install_with_apt: false,
-        nodejs_version: "4.1.2",
+        option_nodejs_install_with_nvm: false,
+        option_nodejs_install_with_apt: true,
+        nodejs_version: "4.x",
 
         docker_test: true
       }
