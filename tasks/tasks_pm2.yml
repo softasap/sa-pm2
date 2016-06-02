@@ -9,8 +9,8 @@
     notify: restart pm2
 
   - name: PM2 | initialize startup script
-    shell: pm2 startup {{pm2_startup | default(ansible_distribution)}} -u {{deploy_user}}
-    become: "{{npm_is_global}}"
+    shell: pm2 startup {{pm2_startup | default(ansible_distribution.lower())}} -u {{deploy_user}}
+    become: yes
     environment:
       PATH: "{{npm_path_detected}}:{{ ansible_env.PATH }}"       # can be different depending on nvm version
     notify: restart pm2

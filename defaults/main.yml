@@ -7,7 +7,7 @@
 
   deploy_user: "{{ansible_user_id}}"
 
-  pm2_startup: "{{ansible_distribution}}"
+  pm2_startup: "{{ansible_distribution | lower}}"
 
 
 
