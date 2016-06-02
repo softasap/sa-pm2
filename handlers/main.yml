@@ -2,6 +2,6 @@
 # handlers file for sa-pm2
 
   - name: restart pm2
-    service: name=pm2 state=restarted
+    shell: /etc/init.d/pm2-init.sh restart
     become: yes
     when: docker_test is not defined
