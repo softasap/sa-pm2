@@ -1,0 +1,22 @@
+---
+# defaults file for sa-pm2
+
+
+  root_dir: "{{ role_path }}"
+  role_dir: "{{ role_path }}"
+
+  deploy_user: "{{ansible_user_id}}"
+
+  pm2_startup: "{{ansible_distribution}}"
+
+
+
+  option_install_nodejs: false
+  option_nodejs_install_with_nvm: false
+  option_nodejs_install_with_apt: false
+  option_nodejs_link_globally: false
+  option_integrate_w_bash: false
+  option_integrate_w_zsh: false
+  nodejs_version: "4.x" # 0.10 0.12 4.x 5.x
+
+  nvm_version: 0.31.1

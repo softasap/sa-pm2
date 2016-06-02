@@ -1,0 +1,23 @@
+---
+- hosts: www
+
+  vars:
+    - root_dir: ..
+
+
+  pre_tasks:
+    - debug: msg="Pre tasks section"
+
+  roles:
+     - {
+         role: "sa-pm2",
+
+         option_install_nodejs: true,
+         option_nodejs_install_with_nvm: true,
+         option_nodejs_install_with_apt: false,
+         nodejs_version: "4.1.2"
+       }
+
+
+  tasks:
+    - debug: msg="Tasks section"
