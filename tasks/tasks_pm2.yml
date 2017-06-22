@@ -13,6 +13,7 @@
     become: yes
     environment:
       PATH: "{{npm_path_detected}}:{{ ansible_env.PATH }}"       # can be different depending on nvm version
+    when: docker_test is not defined
     notify: restart pm2
 
   - name: PM2 | generate initial .pm2/dump.pm2 to prevent error on reboot

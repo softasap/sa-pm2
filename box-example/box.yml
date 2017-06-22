@@ -15,7 +15,7 @@
          option_install_nodejs: true,
          option_nodejs_install_with_nvm: true,
          option_nodejs_install_with_apt: false,
-         nodejs_version: "4.1.2"
+         nodejs_version: "7.1.0"
        }
 
 
