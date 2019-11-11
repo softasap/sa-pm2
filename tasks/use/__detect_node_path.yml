@@ -6,6 +6,7 @@
   - name: set initial fact about npm_source_prefix
     set_fact:
       npm_source_prefix: ""
+      npm_is_global: true
 
   - name: USE | Detect Node Location overrides
     shell: |
