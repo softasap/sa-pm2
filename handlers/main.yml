@@ -5,3 +5,5 @@
     shell: /etc/init.d/pm2-init.sh restart
     become: yes
     when: docker_test is not defined
+    tags:
+      - skip_ansible_lint

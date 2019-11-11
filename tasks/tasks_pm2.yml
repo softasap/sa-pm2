@@ -1,23 +1,27 @@
 ---
-  - include: use/__detect_node_path.yml
+  - include_tasks: use/__detect_node_path.yml
 
   - name: PM2 | install package
     npm:  name=pm2  global=yes version="{{ pm2_version | default(omit) }}"
-    become: "{{npm_is_global}}"
+    become: "{{ npm_is_global }}"
     environment:
-      PATH: "{{npm_path_detected}}:{{ ansible_env.PATH }}"       # can be different depending on nvm version
+      PATH: "{{ npm_path_detected }}:{{ ansible_env.PATH }}"       # can be different depending on nvm version
     notify: restart pm2
 
   - name: PM2 | initialize startup script
-    shell: pm2 startup {{pm2_startup | default(ansible_service_mgr.lower())}} -u {{deploy_user}} --hp /home/{{deploy_user}}
+    shell: pm2 startup {{ pm2_startup | default(ansible_service_mgr.lower()) }} -u {{ deploy_user }} --hp /home/{{ deploy_user }}
     become: yes
     environment:
-      PATH: "{{npm_path_detected}}:{{ ansible_env.PATH }}"       # can be different depending on nvm version
+      PATH: "{{ npm_path_detected }}:{{ ansible_env.PATH }}"       # can be different depending on nvm version
     when: docker_test is not defined
     notify: restart pm2
+    tags:
+      - skip_ansible_lint
 
   - name: PM2 | generate initial .pm2/dump.pm2 to prevent error on reboot
     shell: pm2 save
-    become: "{{deploy_user}}"
+    become: "{{ deploy_user }}"
     environment:
-      PATH: "{{npm_path_detected}}:{{ ansible_env.PATH }}"       # can be different depending on nvm version
+      PATH: "{{ npm_path_detected }}:{{ ansible_env.PATH }}"       # can be different depending on nvm version
+    tags:
+      - skip_ansible_lint
