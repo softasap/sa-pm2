@@ -21,6 +21,7 @@
       fi
     become: yes
     become_user: "{{ deploy_user }}"
+    changed_when: false
     args:
       executable: /bin/bash
     register: nvm_detect_raw
@@ -35,11 +36,14 @@
 
   - name: NODE LOCATION | Detect npm
     shell: '{{ npm_source_prefix }} dirname "`which npm`"'
+    changed_when: false
     args:
        executable: /bin/bash
     register: npm_path_detected_raw
     ignore_errors: true
     become: "{{ deploy_user }}"
+    tags:
+      - skip_ansible_lint
 
 #  - debug: var="npm_path_detected_raw"
 
