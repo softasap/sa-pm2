@@ -26,6 +26,8 @@
       executable: /bin/bash
     register: nvm_detect_raw
 
+  - debug: var="nvm_detect_raw"
+
   - name: set discovered fact about npm_source_prefix
     set_fact:
       npm_source_prefix: "source {{ nvm_detect_raw.stdout }} &&"
