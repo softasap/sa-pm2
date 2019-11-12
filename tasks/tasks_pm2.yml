@@ -21,6 +21,7 @@
   - name: PM2 | generate initial .pm2/dump.pm2 to prevent error on reboot
     shell: pm2 save
     become: "{{ deploy_user }}"
+    ignore_errors: true
     environment:
       PATH: "{{ npm_path_detected }}:{{ ansible_env.PATH }}"       # can be different depending on nvm version
     tags:
