@@ -12,5 +12,6 @@
 
   roles:
      - {
-        role: "sa-pm2"
+        role: "sa-pm2",
+        option_install_nodejs: true
        }
